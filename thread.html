@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ForumHub - Discussion</title>
+
+    <!-- IMPORTANT: Load the main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Forum<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Discussions
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Thread will be inserted by JavaScript -->
+
+        <div id="threadDetail">
+            <div class="thread-main">
+                <p>Loading discussion...</p>
+            </div>
+        </div>
+
+
+        <!-- ================= REPLIES ================= -->
+
+        <section class="replies-section">
+
+            <div class="section-heading">
+
+                <h2>Replies</h2>
+
+                <span class="reply-count">
+                    Community Discussion
+                </span>
+
+            </div>
+
+
+            <!-- Replies inserted by thread.js -->
+
+            <div id="replies"></div>
+
+        </section>
+
+
+        <!-- ================= REPLY FORM ================= -->
+
+        <section class="reply-box">
+
+            <h2>Your Reply</h2>
+
+            <p class="reply-help">
+                Share your answer or thoughts with the community.
+            </p>
+
+
+            <form id="replyForm">
+
+                <textarea
+                    id="replyText"
+                    placeholder="Write your reply here..."
+                    rows="6"
+                    required
+                ></textarea>
+
+
+                <div class="reply-form-bottom">
+
+                    <span
+                        id="replyStatus"
+                        class="reply-status"
+                    ></span>
+
+                    <button
+                        type="submit"
+                        class="post-reply-btn"
+                    >
+                        Post Reply
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 ForumHub • Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- IMPORTANT: Load JavaScript -->
+
+    <script src="js/thread.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ForumHub - Student Discussion Community</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Forum<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Discussions</a>
+                <a href="create-thread.html">Create Thread</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="login.html">Login</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    Student Discussion Community
+                </div>
+
+                <h1>
+                    Ask. Discuss.
+                    <span>Learn together.</span>
+                </h1>
+
+                <p>
+                    A collaborative forum where students can ask
+                    questions, share knowledge and help each other.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="create.html" class="primary-btn">
+                        + Start a Discussion
+                    </a>
+
+                    <a href="#discussions" class="secondary-btn">
+                        Explore Discussions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-container">
+
+            <div class="stat-card">
+
+                <div class="stat-number" id="discussionCount">
+                    0
+                </div>
+
+                <div class="stat-title">
+                    Active Discussions
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number" id="userCount">
+                    0
+                </div>
+
+                <div class="stat-title">
+                    Registered Users
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    Community
+                </div>
+
+                <div class="stat-title">
+                    Learn & Share
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DISCUSSIONS ================= -->
+
+        <section
+            class="discussion-section"
+            id="discussions"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <div class="section-label">
+                        COMMUNITY
+                    </div>
+
+                    <h2>
+                        Latest Discussions
+                    </h2>
+
+                </div>
+
+                <a
+                    href="create.html"
+                    class="new-thread-btn"
+                >
+                    + New Thread
+                </a>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-area">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search discussions..."
+                >
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="Programming">
+                        Programming
+                    </option>
+
+                    <option value="Academics">
+                        Academics
+                    </option>
+
+                    <option value="Projects">
+                        Projects
+                    </option>
+
+                    <option value="Career">
+                        Career
+                    </option>
+
+                    <option value="General">
+                        General
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DISCUSSIONS -->
+
+            <div
+                id="discussionList"
+                class="discussion-list"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 ForumHub • Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <script src="./js/forum.js"></script>
+
+</body>
+
+</html>

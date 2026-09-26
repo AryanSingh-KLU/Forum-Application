@@ -1,0 +1,8 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Admin Dashboard | ForumHub</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header class="navbar"><a class="brand" href="index.html"><span class="logo">F</span> ForumHub Admin</a><nav><a href="index.html">View Forum</a><button id="logout" class="btn small danger">Logout</button></nav></header>
+<main class="admin"><p class="eyebrow">Admin Module</p><h1>Forum Dashboard</h1><p class="muted">Manage discussions, users and categories.</p>
+<div class="dash"><div><span>Threads</span><b id="threadsN">0</b></div><div><span>Users</span><b id="usersN">0</b></div><div><span>Replies</span><b id="repliesN">0</b></div><div><span>Notifications</span><b id="notifsN">0</b></div></div>
+<section class="admin-panel"><h2>Manage Discussions</h2><div id="adminThreads"></div></section>
+<section class="admin-panel"><h2>Registered Users</h2><div id="adminUsers"></div></section>
+<section class="admin-panel"><h2>Manage Categories</h2><form id="catForm" class="inline-form"><input id="catName" required placeholder="New category"><button class="btn primary">Add Category</button></form><div id="cats" class="chips"></div></section>
+</main><script src="js/admin.js"></script></body></html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Thread - ForumHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* ================= CREATE THREAD PAGE ================= */
+
+        .create-page {
+            min-height: calc(100vh - 72px);
+
+            display: flex;
+            justify-content: center;
+
+            padding: 70px 20px;
+        }
+
+        .create-card {
+            width: min(800px, 100%);
+
+            background: #101d32;
+
+            border: 1px solid #293750;
+
+            border-radius: 22px;
+
+            padding: 45px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .create-badge {
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            background: rgba(128, 101, 255, 0.14);
+
+            color: #a99fff;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            margin-bottom: 20px;
+        }
+
+        .create-card h1 {
+            color: white;
+
+            font-size: 42px;
+
+            margin: 0 0 12px;
+        }
+
+        .create-card > p {
+            color: #9eacc3;
+
+            font-size: 16px;
+
+            margin-bottom: 35px;
+        }
+
+        .create-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .create-form label {
+            color: #dce4f2;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-top: 10px;
+        }
+
+        .create-form input,
+        .create-form select,
+        .create-form textarea {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            background: #0b1729;
+
+            color: white;
+
+            border: 1px solid #34425e;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            padding: 13px 15px;
+        }
+
+        .create-form input,
+        .create-form select {
+            height: 50px;
+        }
+
+        .create-form textarea {
+
+            min-height: 170px;
+
+            resize: vertical;
+
+            font-family: inherit;
+        }
+
+        .create-form input::placeholder,
+        .create-form textarea::placeholder {
+            color: #667792;
+        }
+
+        .create-form input:focus,
+        .create-form select:focus,
+        .create-form textarea:focus {
+
+            border-color: #8065ff;
+
+            box-shadow:
+                0 0 0 3px rgba(128, 101, 255, 0.12);
+        }
+
+        .publish-btn {
+
+            margin-top: 22px;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d63ff,
+                    #8b5cf6
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .publish-btn:hover {
+
+            filter: brightness(1.1);
+
+            transform: translateY(-1px);
+        }
+
+        .create-message {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+        }
+
+        .create-message.success {
+
+            display: block;
+
+            background: rgba(34, 197, 94, 0.12);
+
+            border: 1px solid rgba(34, 197, 94, 0.3);
+
+            color: #86efac;
+        }
+
+        .create-message.error {
+
+            display: block;
+
+            background: rgba(239, 68, 68, 0.12);
+
+            border: 1px solid rgba(239, 68, 68, 0.3);
+
+            color: #ff9c9c;
+        }
+
+        @media (max-width: 600px) {
+
+            .create-card {
+                padding: 28px 22px;
+            }
+
+            .create-card h1 {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Forum<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Discussions
+                </a>
+
+                <a href="create-thread.html">
+                    Create Thread
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= CREATE THREAD ================= -->
+
+    <main class="create-page">
+
+        <div class="create-card">
+
+            <div class="create-badge">
+                STUDENT COMMUNITY
+            </div>
+
+            <h1>
+                Start a Discussion
+            </h1>
+
+            <p>
+                Ask a question or share something useful with the community.
+            </p>
+
+
+            <form
+                id="threadForm"
+                class="create-form"
+            >
+
+                <label for="title">
+                    Discussion Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="What would you like to discuss?"
+                    required
+                >
+
+
+                <label for="category">
+                    Category
+                </label>
+
+                <select
+                    id="category"
+                    required
+                >
+
+                    <option value="">
+                        Select a category
+                    </option>
+
+                    <option value="Programming">
+                        Programming
+                    </option>
+
+                    <option value="Academics">
+                        Academics
+                    </option>
+
+                    <option value="Technology">
+                        Technology
+                    </option>
+
+                    <option value="Projects">
+                        Projects
+                    </option>
+
+                    <option value="General">
+                        General
+                    </option>
+
+                </select>
+
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    placeholder="Explain your question or discussion topic..."
+                    required
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="publish-btn"
+                >
+                    + Publish Discussion
+                </button>
+
+            </form>
+
+
+            <div
+                id="createMessage"
+                class="create-message"
+            ></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        const form =
+            document.getElementById("threadForm");
+
+        const message =
+            document.getElementById("createMessage");
+
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const title =
+                    document
+                        .getElementById("title")
+                        .value
+                        .trim();
+
+
+                const category =
+                    document
+                        .getElementById("category")
+                        .value;
+
+
+                const description =
+                    document
+                        .getElementById("description")
+                        .value
+                        .trim();
+
+
+                if (!title || !category || !description) {
+
+                    message.textContent =
+                        "Please fill in all fields.";
+
+                    message.className =
+                        "create-message error";
+
+                    return;
+                }
+
+
+                /* Get logged-in user */
+
+                const currentUser =
+                    JSON.parse(
+                        localStorage.getItem("currentUser")
+                    );
+
+
+                const author =
+                    currentUser
+                        ? currentUser.name
+                        : "Anonymous";
+
+
+                /* Get existing threads */
+
+                let threads =
+                    JSON.parse(
+                        localStorage.getItem("threads")
+                    ) || [];
+
+
+                /* Create new thread */
+
+                const newThread = {
+
+                    id: Date.now(),
+
+                    title: title,
+
+                    category: category,
+
+                    description: description,
+
+                    author: author,
+
+                    date:
+                        new Date()
+                            .toISOString()
+                            .split("T")[0],
+
+                    likes: 0,
+
+                    dislikes: 0,
+
+                    replies: [],
+
+                    followers: []
+
+                };
+
+
+                threads.unshift(newThread);
+
+
+                /* Save to Local Storage */
+
+                localStorage.setItem(
+                    "threads",
+                    JSON.stringify(threads)
+                );
+
+
+                message.textContent =
+                    "Discussion published successfully!";
+
+                message.className =
+                    "create-message success";
+
+
+                form.reset();
+
+
+                /* Open discussion after short delay */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "index.html";
+
+                    },
+                    1000
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

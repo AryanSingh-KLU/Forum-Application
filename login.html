@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - ForumHub</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        /* ================= LOGIN PAGE ================= */
+
+        .login-page {
+            min-height: calc(100vh - 71px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 60px 20px;
+        }
+
+        .login-card {
+            width: min(440px, 100%);
+
+            background: #101d32;
+
+            border: 1px solid #293750;
+
+            border-radius: 20px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .login-badge {
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background: rgba(128, 101, 255, 0.14);
+
+            color: #a99fff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .login-card h1 {
+            margin: 0 0 10px;
+
+            color: #ffffff;
+
+            font-size: 38px;
+        }
+
+        .login-card > p {
+            color: #9eacc3;
+
+            margin: 0 0 30px;
+
+            font-size: 15px;
+        }
+
+        .login-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .login-form label {
+            color: #dce4f2;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-top: 8px;
+        }
+
+        .login-form input {
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            background: #0b1729;
+
+            color: #ffffff;
+
+            border: 1px solid #34425e;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .login-form input::placeholder {
+            color: #667792;
+        }
+
+        .login-form input:focus {
+            border-color: #8065ff;
+
+            box-shadow:
+                0 0 0 3px rgba(128, 101, 255, 0.12);
+        }
+
+        .login-form button {
+            width: 100%;
+
+            height: 48px;
+
+            margin-top: 18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d63ff,
+                    #8b5cf6
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            filter: brightness(1.1);
+
+            transform: translateY(-1px);
+        }
+
+        .login-message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 11px;
+
+            border-radius: 9px;
+
+            background: rgba(239, 68, 68, 0.12);
+
+            border: 1px solid rgba(239, 68, 68, 0.3);
+
+            color: #ff9c9c;
+
+            font-size: 13px;
+        }
+
+        .login-link {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #7f8da8;
+
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #9b8cff;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .login-link a:hover {
+            color: #ffffff;
+        }
+
+        .demo-box {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: rgba(128, 101, 255, 0.08);
+
+            border: 1px solid #34425e;
+
+            border-radius: 10px;
+
+            color: #aebbd0;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .demo-box strong {
+            color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+
+            .login-card {
+                padding: 28px 22px;
+            }
+
+            .login-card h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Forum<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Discussions
+                </a>
+
+                <a href="create-thread.html">
+                    Create Thread
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-badge">
+                STUDENT COMMUNITY
+            </div>
+
+            <h1>
+                Welcome back
+            </h1>
+
+            <p>
+                Login to join the conversation.
+            </p>
+
+
+            <form
+                id="loginForm"
+                class="login-form"
+            >
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+
+            <div
+                id="loginMessage"
+                class="login-message"
+            ></div>
+
+
+            <div class="login-link">
+
+                New here?
+
+                <a href="signup.html">
+                    Create an account
+                </a>
+
+            </div>
+
+
+            <!-- ADMIN DEMO -->
+
+            <div class="demo-box">
+
+                <strong>Admin Demo</strong>
+
+                <br>
+
+                Email:
+                admin@forumhub.com
+
+                <br>
+
+                Password:
+                admin123
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= LOGIN SCRIPT ================= -->
+
+    <script>
+
+        /* Create demo admin account if it doesn't exist */
+
+        let users =
+            JSON.parse(
+                localStorage.getItem("users")
+            ) || [];
+
+
+        const adminExists =
+            users.some(
+                user =>
+                    user.email ===
+                    "admin@forumhub.com"
+            );
+
+
+        if (!adminExists) {
+
+            users.push({
+
+                name: "Admin",
+
+                email: "admin@forumhub.com",
+
+                password: "admin123",
+
+                role: "admin"
+
+            });
+
+            localStorage.setItem(
+                "users",
+                JSON.stringify(users)
+            );
+
+        }
+
+
+        /* Login */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const email =
+                        document
+                            .getElementById("email")
+                            .value
+                            .trim()
+                            .toLowerCase();
+
+
+                    const password =
+                        document
+                            .getElementById("password")
+                            .value;
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "loginMessage"
+                            );
+
+
+                    const allUsers =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "users"
+                            )
+                        ) || [];
+
+
+                    const user =
+                        allUsers.find(
+                            u =>
+                                String(
+                                    u.email
+                                ).toLowerCase()
+                                === email
+                                &&
+                                u.password ===
+                                password
+                        );
+
+
+                    if (!user) {
+
+                        message.textContent =
+                            "Invalid email or password.";
+
+                        message.style.display =
+                            "block";
+
+                        return;
+
+                    }
+
+
+                    /* Save logged-in user */
+
+                    localStorage.setItem(
+                        "currentUser",
+                        JSON.stringify(user)
+                    );
+
+
+                    /* Redirect */
+
+                    if (user.role === "admin") {
+
+                        window.location.href =
+                            "admin.html";
+
+                    } else {
+
+                        window.location.href =
+                            "index.html";
+
+                    }
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

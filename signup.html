@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up - ForumHub</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        /* ================= SIGNUP PAGE ================= */
+
+        .signup-page {
+            min-height: calc(100vh - 71px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 60px 20px;
+        }
+
+        .signup-card {
+            width: min(460px, 100%);
+
+            background: #101d32;
+
+            border: 1px solid #293750;
+
+            border-radius: 20px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .signup-badge {
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background: rgba(128, 101, 255, 0.14);
+
+            color: #a99fff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .signup-card h1 {
+            margin: 0 0 10px;
+
+            color: #ffffff;
+
+            font-size: 38px;
+
+            line-height: 1.1;
+        }
+
+        .signup-card > p {
+            color: #9eacc3;
+
+            margin: 0 0 30px;
+
+            font-size: 15px;
+        }
+
+        .signup-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .signup-form label {
+            color: #dce4f2;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-top: 8px;
+        }
+
+        .signup-form input {
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            background: #0b1729;
+
+            color: #ffffff;
+
+            border: 1px solid #34425e;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .signup-form input::placeholder {
+            color: #667792;
+        }
+
+        .signup-form input:focus {
+            border-color: #8065ff;
+
+            box-shadow:
+                0 0 0 3px rgba(128, 101, 255, 0.12);
+        }
+
+        .signup-form button {
+            width: 100%;
+
+            height: 48px;
+
+            margin-top: 18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d63ff,
+                    #8b5cf6
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .signup-form button:hover {
+            filter: brightness(1.1);
+
+            transform: translateY(-1px);
+        }
+
+        .signup-message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 11px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+        }
+
+        .signup-message.error {
+            display: block;
+
+            background: rgba(239, 68, 68, 0.12);
+
+            border: 1px solid rgba(239, 68, 68, 0.3);
+
+            color: #ff9c9c;
+        }
+
+        .signup-message.success {
+            display: block;
+
+            background: rgba(34, 197, 94, 0.12);
+
+            border: 1px solid rgba(34, 197, 94, 0.3);
+
+            color: #86efac;
+        }
+
+        .signup-link {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #7f8da8;
+
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #9b8cff;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .signup-link a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+
+            .signup-card {
+                padding: 28px 22px;
+            }
+
+            .signup-card h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Forum<span>Hub</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Discussions
+                </a>
+
+                <a href="create-thread.html">
+                    Create Thread
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SIGNUP ================= -->
+
+    <main class="signup-page">
+
+        <div class="signup-card">
+
+            <div class="signup-badge">
+                JOIN THE COMMUNITY
+            </div>
+
+            <h1>
+                Create Account
+            </h1>
+
+            <p>
+                Ask questions and share knowledge.
+            </p>
+
+
+            <form
+                id="signupForm"
+                class="signup-form"
+            >
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required
+                >
+
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div
+                id="signupMessage"
+                class="signup-message"
+            ></div>
+
+
+            <div class="signup-link">
+
+                Already registered?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SIGNUP JAVASCRIPT ================= -->
+
+    <script>
+
+        document
+            .getElementById("signupForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document
+                            .getElementById("name")
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document
+                            .getElementById("email")
+                            .value
+                            .trim()
+                            .toLowerCase();
+
+
+                    const password =
+                        document
+                            .getElementById("password")
+                            .value;
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "signupMessage"
+                            );
+
+
+                    let users =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "users"
+                            )
+                        ) || [];
+
+
+                    /* Check existing email */
+
+                    const existingUser =
+                        users.find(
+                            user =>
+                                String(
+                                    user.email
+                                ).toLowerCase()
+                                === email
+                        );
+
+
+                    if (existingUser) {
+
+                        message.textContent =
+                            "An account with this email already exists.";
+
+                        message.className =
+                            "signup-message error";
+
+                        return;
+
+                    }
+
+
+                    /* Create new user */
+
+                    const newUser = {
+
+                        name: name,
+
+                        email: email,
+
+                        password: password,
+
+                        role: "user"
+
+                    };
+
+
+                    users.push(newUser);
+
+
+                    /* Save to Local Storage */
+
+                    localStorage.setItem(
+                        "users",
+                        JSON.stringify(users)
+                    );
+
+
+                    message.textContent =
+                        "Account created successfully! Redirecting to login...";
+
+                    message.className =
+                        "signup-message success";
+
+
+                    /* Clear form */
+
+                    document
+                        .getElementById(
+                            "signupForm"
+                        )
+                        .reset();
+
+
+                    /* Redirect */
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "login.html";
+
+                        },
+                        1200
+                    );
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
