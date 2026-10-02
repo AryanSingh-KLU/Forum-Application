@@ -3,87 +3,86 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ForumHub - Student Discussion Community</title>
 
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- ==============================
+         NAVIGATION BAR
+    =============================== -->
 
     <header class="navbar">
 
-        <div class="nav-container">
+        <a href="index.html" class="brand">
+            <span>F</span> ForumHub
+        </a>
 
-            <a href="index.html" class="logo">
-                Forum<span>Hub</span>
-            </a>
-
-            <nav class="nav-links">
-                <a href="index.html">Discussions</a>
-                <a href="create-thread.html">Create Thread</a>
-                <a href="notifications.html">Notifications</a>
-                <a href="login.html">Login</a>
-            </nav>
-
-        </div>
+        <nav class="nav-links">
+            <a href="index.html">Discussions</a>
+            <a href="create-thread.html">Create Thread</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="login.html">Login</a>
+        </nav>
 
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ==============================
+         HERO SECTION
+    =============================== -->
 
     <main>
 
         <section class="hero">
 
-            <div class="hero-content">
+            <div class="eyebrow">
+                Student Discussion Community
+            </div>
 
-                <div class="hero-badge">
-                    Student Discussion Community
-                </div>
+            <h1>
+                Ask. Discuss.<br>
+                <span>Learn together.</span>
+            </h1>
 
-                <h1>
-                    Ask. Discuss.
-                    <span>Learn together.</span>
-                </h1>
+            <p>
+                A collaborative forum where students can ask questions,
+                share knowledge and help each other.
+            </p>
 
-                <p>
-                    A collaborative forum where students can ask
-                    questions, share knowledge and help each other.
-                </p>
+            <div class="hero-actions">
 
-                <div class="hero-buttons">
+                <a href="create-thread.html" class="btn">
+                    + Start a Discussion
+                </a>
 
-                    <a href="create.html" class="primary-btn">
-                        + Start a Discussion
-                    </a>
-
-                    <a href="#discussions" class="secondary-btn">
-                        Explore Discussions
-                    </a>
-
-                </div>
+                <a href="#discussions" class="btn btn-secondary">
+                    Explore Discussions
+                </a>
 
             </div>
 
         </section>
 
 
-        <!-- ================= STATS ================= -->
+        <!-- ==============================
+             STATISTICS
+        =============================== -->
 
-        <section class="stats-container">
+        <section class="stats">
 
             <div class="stat-card">
 
-                <div class="stat-number" id="discussionCount">
+                <div class="number" id="activeDiscussions">
                     0
                 </div>
 
-                <div class="stat-title">
+                <div class="label">
                     Active Discussions
                 </div>
 
@@ -92,11 +91,11 @@
 
             <div class="stat-card">
 
-                <div class="stat-number" id="userCount">
+                <div class="number" id="registeredUsers">
                     0
                 </div>
 
-                <div class="stat-title">
+                <div class="label">
                     Registered Users
                 </div>
 
@@ -105,11 +104,11 @@
 
             <div class="stat-card">
 
-                <div class="stat-number">
+                <div class="number">
                     Community
                 </div>
 
-                <div class="stat-title">
+                <div class="label">
                     Learn & Share
                 </div>
 
@@ -118,45 +117,43 @@
         </section>
 
 
-        <!-- ================= DISCUSSIONS ================= -->
+        <!-- ==============================
+             DISCUSSIONS SECTION
+        =============================== -->
 
-        <section
-            class="discussion-section"
-            id="discussions"
-        >
+        <section class="section" id="discussions">
 
-            <div class="section-header">
+            <div class="section-label">
+                Community
+            </div>
 
-                <div>
+            <h2>
+                Latest Discussions
+            </h2>
 
-                    <div class="section-label">
-                        COMMUNITY
-                    </div>
 
-                    <h2>
-                        Latest Discussions
-                    </h2>
+            <!-- NEW THREAD BUTTON -->
 
-                </div>
+            <div class="hero-actions">
 
-                <a
-                    href="create.html"
-                    class="new-thread-btn"
-                >
+                <a href="create-thread.html" class="btn">
                     + New Thread
                 </a>
 
             </div>
 
 
-            <!-- SEARCH -->
+            <!-- ==============================
+                 SEARCH AND FILTER
+            =============================== -->
 
-            <div class="search-area">
+            <div class="search-bar">
 
                 <input
                     type="text"
                     id="searchInput"
                     placeholder="Search discussions..."
+                    autocomplete="off"
                 >
 
                 <select id="categoryFilter">
@@ -177,43 +174,656 @@
                         Projects
                     </option>
 
-                    <option value="Career">
-                        Career
-                    </option>
-
                     <option value="General">
                         General
                     </option>
 
                 </select>
 
+                <button
+                    type="button"
+                    onclick="filterDiscussions()"
+                >
+                    Search
+                </button>
+
             </div>
 
 
-            <!-- DISCUSSIONS -->
+            <!-- ==============================
+                 DISCUSSION CARDS
+            =============================== -->
 
             <div
+                class="discussions-grid"
                 id="discussionList"
-                class="discussion-list"
-            ></div>
+            >
+
+                <!-- Discussion 1 -->
+
+                <article
+                    class="discussion-card"
+                    data-category="Academics"
+                    data-title="How to prepare for semester exams"
+                >
+
+                    <div class="category-badge">
+                        Academics
+                    </div>
+
+                    <h3>
+                        How to prepare for semester exams?
+                    </h3>
+
+                    <p>
+                        Share your study methods, useful resources
+                        and exam preparation tips.
+                    </p>
+
+                    <div class="discussion-meta">
+                        Posted by <strong>Rahul</strong>
+                        • 4 replies
+                    </div>
+
+                    <div class="discussion-actions">
+
+                        <button
+                            class="btn btn-small"
+                            type="button"
+                            onclick="viewDiscussion(
+                                'How to prepare for semester exams?',
+                                'Academics',
+                                'Share your study methods, useful resources and exam preparation tips.'
+                            )"
+                        >
+                            View
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-small"
+                            type="button"
+                            onclick="deleteDiscussion(this)"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Discussion 2 -->
+
+                <article
+                    class="discussion-card"
+                    data-category="Programming"
+                    data-title="How to learn JavaScript?"
+                >
+
+                    <div class="category-badge">
+                        Programming
+                    </div>
+
+                    <h3>
+                        How to learn JavaScript?
+                    </h3>
+
+                    <p>
+                        What is the best way for a beginner to learn
+                        JavaScript fundamentals?
+                    </p>
+
+                    <div class="discussion-meta">
+                        Posted by <strong>Anuj</strong>
+                        • 2 replies
+                    </div>
+
+                    <div class="discussion-actions">
+
+                        <button
+                            class="btn btn-small"
+                            type="button"
+                            onclick="viewDiscussion(
+                                'How to learn JavaScript?',
+                                'Programming',
+                                'What is the best way for a beginner to learn JavaScript fundamentals?'
+                            )"
+                        >
+                            View
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-small"
+                            type="button"
+                            onclick="deleteDiscussion(this)"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Discussion 3 -->
+
+                <article
+                    class="discussion-card"
+                    data-category="Projects"
+                    data-title="Project ideas for college"
+                >
+
+                    <div class="category-badge">
+                        Projects
+                    </div>
+
+                    <h3>
+                        Project ideas for college
+                    </h3>
+
+                    <p>
+                        Looking for simple and innovative project ideas
+                        for a college submission.
+                    </p>
+
+                    <div class="discussion-meta">
+                        Posted by <strong>Aryan Singh</strong>
+                        • 3 replies
+                    </div>
+
+                    <div class="discussion-actions">
+
+                        <button
+                            class="btn btn-small"
+                            type="button"
+                            onclick="viewDiscussion(
+                                'Project ideas for college',
+                                'Projects',
+                                'Looking for simple and innovative project ideas for a college submission.'
+                            )"
+                        >
+                            View
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-small"
+                            type="button"
+                            onclick="deleteDiscussion(this)"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Discussion 4 -->
+
+                <article
+                    class="discussion-card"
+                    data-category="General"
+                    data-title="Best way to manage college life"
+                >
+
+                    <div class="category-badge">
+                        General
+                    </div>
+
+                    <h3>
+                        Best way to manage college life?
+                    </h3>
+
+                    <p>
+                        Share your experience about managing classes,
+                        assignments, projects and free time.
+                    </p>
+
+                    <div class="discussion-meta">
+                        Posted by <strong>Rahul</strong>
+                        • 5 replies
+                    </div>
+
+                    <div class="discussion-actions">
+
+                        <button
+                            class="btn btn-small"
+                            type="button"
+                            onclick="viewDiscussion(
+                                'Best way to manage college life?',
+                                'General',
+                                'Share your experience about managing classes, assignments, projects and free time.'
+                            )"
+                        >
+                            View
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-small"
+                            type="button"
+                            onclick="deleteDiscussion(this)"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- EMPTY RESULT -->
+
+            <div
+                class="empty-state"
+                id="noResults"
+                style="display: none;"
+            >
+
+                <h3>
+                    No discussions found
+                </h3>
+
+                <p>
+                    Try another search term or category.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CATEGORIES
+        =============================== -->
+
+        <section class="categories">
+
+            <div class="section-label">
+                Explore
+            </div>
+
+            <h2>
+                Discussion Categories
+            </h2>
+
+
+            <div class="category-grid">
+
+
+                <!-- Programming -->
+
+                <a
+                    href="#discussions"
+                    class="category-card"
+                    onclick="selectCategory('Programming')"
+                >
+
+                    <div class="category-icon">
+                        💻
+                    </div>
+
+                    <div class="category-info">
+
+                        <h3>
+                            Programming
+                        </h3>
+
+                        <p>
+                            Technology discussions
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Academics -->
+
+                <a
+                    href="#discussions"
+                    class="category-card"
+                    onclick="selectCategory('Academics')"
+                >
+
+                    <div class="category-icon">
+                        📚
+                    </div>
+
+                    <div class="category-info">
+
+                        <h3>
+                            Academics
+                        </h3>
+
+                        <p>
+                            College and study topics
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Projects -->
+
+                <a
+                    href="#discussions"
+                    class="category-card"
+                    onclick="selectCategory('Projects')"
+                >
+
+                    <div class="category-icon">
+                        🎯
+                    </div>
+
+                    <div class="category-info">
+
+                        <h3>
+                            Projects
+                        </h3>
+
+                        <p>
+                            Project related discussions
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- General -->
+
+                <a
+                    href="#discussions"
+                    class="category-card"
+                    onclick="selectCategory('General')"
+                >
+
+                    <div class="category-icon">
+                        💬
+                    </div>
+
+                    <div class="category-info">
+
+                        <h3>
+                            General
+                        </h3>
+
+                        <p>
+                            General conversations
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
 
         </section>
 
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ==============================
+         FOOTER
+    =============================== -->
 
     <footer class="footer">
 
         <p>
-            © 2026 ForumHub • Built with HTML, CSS & JavaScript
+            © 2026 ForumHub. Student Discussion Community.
         </p>
 
     </footer>
 
 
-    <script src="./js/forum.js"></script>
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="js/forum.js"></script>
+    <script>
+
+        /* --------------------------------
+           COUNT DISCUSSIONS
+        -------------------------------- */
+
+        function updateStatistics() {
+
+            const discussions =
+                document.querySelectorAll(
+                    ".discussion-card:not([style*='display: none'])"
+                );
+
+            const activeDiscussions =
+                document.getElementById("activeDiscussions");
+
+            if (activeDiscussions) {
+                activeDiscussions.textContent =
+                    discussions.length;
+            }
+
+            const registeredUsers =
+                document.getElementById("registeredUsers");
+
+            if (registeredUsers) {
+                let users = [];
+                try { users = JSON.parse(localStorage.getItem("users") || "[]"); } catch (error) {}
+                registeredUsers.textContent = Array.isArray(users) ? users.length : 0;
+            }
+        }
+
+
+        /* --------------------------------
+           SEARCH DISCUSSIONS
+        -------------------------------- */
+
+        function filterDiscussions() {
+
+            const searchInput =
+                document.getElementById("searchInput");
+
+            const categoryFilter =
+                document.getElementById("categoryFilter");
+
+            const searchText =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+            const selectedCategory =
+                categoryFilter.value;
+
+            const cards =
+                document.querySelectorAll(
+                    ".discussion-card"
+                );
+
+            let visibleCount = 0;
+
+
+            cards.forEach(function(card) {
+
+                const title =
+                    (card.dataset.title || "").toLowerCase();
+
+                const description = card.querySelector("p")?.textContent.toLowerCase() || "";
+
+                const category =
+                    card.dataset.category;
+
+
+                const matchesSearch =
+                    title.includes(searchText) || description.includes(searchText);
+
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
+
+
+                if (
+                    matchesSearch &&
+                    matchesCategory
+                ) {
+
+                    card.style.display = "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            const noResults =
+                document.getElementById("noResults");
+
+
+            if (visibleCount === 0) {
+
+                noResults.style.display = "block";
+
+            } else {
+
+                noResults.style.display = "none";
+
+            }
+
+
+            updateStatistics();
+        }
+
+
+        /* --------------------------------
+           CATEGORY SELECTION
+        -------------------------------- */
+
+        function selectCategory(category) {
+
+            const categoryFilter =
+                document.getElementById(
+                    "categoryFilter"
+                );
+
+            categoryFilter.value = category;
+
+            filterDiscussions();
+
+        }
+
+
+        /* --------------------------------
+           VIEW DISCUSSION
+        -------------------------------- */
+
+        function viewDiscussion(
+            title,
+            category,
+            description
+        ) {
+
+            const message =
+                "Title: " + title +
+                "\n\n" +
+
+                "Category: " + category +
+                "\n\n" +
+
+                "Description:\n" +
+                description;
+
+
+            alert(message);
+        }
+
+
+        /* --------------------------------
+           DELETE DISCUSSION
+        -------------------------------- */
+
+        function deleteDiscussion(button) {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to delete this discussion?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            const card =
+                button.closest(
+                    ".discussion-card"
+                );
+
+
+            if (card) {
+
+                card.remove();
+
+                updateStatistics();
+
+            }
+
+        }
+
+
+        /* --------------------------------
+           LIVE SEARCH
+        -------------------------------- */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "input",
+                filterDiscussions
+            );
+
+        }
+
+
+        /* --------------------------------
+           CATEGORY CHANGE
+        -------------------------------- */
+
+        const categoryFilter =
+            document.getElementById(
+                "categoryFilter"
+            );
+
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                filterDiscussions
+            );
+
+        }
+
+
+        /* --------------------------------
+           INITIAL LOAD
+        -------------------------------- */
+
+        document.addEventListener("DOMContentLoaded", updateStatistics);
+
+    </script>
 
 </body>
 

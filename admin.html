@@ -1,8 +1,224 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Admin Dashboard | ForumHub</title><link rel="stylesheet" href="css/style.css"></head>
-<body><header class="navbar"><a class="brand" href="index.html"><span class="logo">F</span> ForumHub Admin</a><nav><a href="index.html">View Forum</a><button id="logout" class="btn small danger">Logout</button></nav></header>
-<main class="admin"><p class="eyebrow">Admin Module</p><h1>Forum Dashboard</h1><p class="muted">Manage discussions, users and categories.</p>
-<div class="dash"><div><span>Threads</span><b id="threadsN">0</b></div><div><span>Users</span><b id="usersN">0</b></div><div><span>Replies</span><b id="repliesN">0</b></div><div><span>Notifications</span><b id="notifsN">0</b></div></div>
-<section class="admin-panel"><h2>Manage Discussions</h2><div id="adminThreads"></div></section>
-<section class="admin-panel"><h2>Registered Users</h2><div id="adminUsers"></div></section>
-<section class="admin-panel"><h2>Manage Categories</h2><form id="catForm" class="inline-form"><input id="catName" required placeholder="New category"><button class="btn primary">Add Category</button></form><div id="cats" class="chips"></div></section>
-</main><script src="js/admin.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForumHub Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar admin-navbar">
+    <a href="index.html" class="brand">
+        <span class="brand-f">F</span>
+        <span>Forum<span>Hub</span></span>
+    </a>
+
+    <div class="nav-right">
+        <a href="index.html">View Forum</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+</header>
+
+
+<main class="admin-container">
+
+    <!-- ADMIN HERO -->
+    <section class="admin-header">
+        <p class="eyebrow">ADMIN MODULE</p>
+
+        <h1>Forum Dashboard</h1>
+
+        <p class="admin-intro">
+            Manage discussions, users and categories from one place.
+        </p>
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="admin-stats">
+
+        <div class="admin-stat">
+            <div class="icon">💬</div>
+            <div>
+                <span class="count" id="threadsCount">0</span>
+                <p class="title">Threads</p>
+            </div>
+        </div>
+
+        <div class="admin-stat">
+            <div class="icon">👤</div>
+            <div>
+                <span class="count" id="usersCount">0</span>
+                <p class="title">Users</p>
+            </div>
+        </div>
+
+        <div class="admin-stat">
+            <div class="icon">💭</div>
+            <div>
+                <span class="count" id="repliesCount">0</span>
+                <p class="title">Replies</p>
+            </div>
+        </div>
+
+        <div class="admin-stat">
+            <div class="icon">🔔</div>
+            <div>
+                <span class="count" id="notificationsCount">0</span>
+                <p class="title">Notifications</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- DISCUSSION MANAGEMENT -->
+    <section class="admin-panel">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">CONTENT MANAGEMENT</p>
+                <h2>Manage Discussions</h2>
+            </div>
+
+            <span id="discussionCountLabel" class="section-count">
+                0 discussions
+            </span>
+        </div>
+
+        <div id="discussionList" class="admin-list">
+            <!-- JavaScript loads discussions here -->
+        </div>
+
+    </section>
+
+
+    <!-- USER MANAGEMENT -->
+    <section class="admin-panel">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">USER MANAGEMENT</p>
+                <h2>Registered Users</h2>
+            </div>
+
+            <span id="userCountLabel" class="section-count">
+                0 users
+            </span>
+        </div>
+
+        <div id="userList" class="admin-list">
+            <!-- JavaScript loads users here -->
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY MANAGEMENT -->
+    <section class="admin-panel category-section">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">ORGANIZATION</p>
+                <h2>Manage Categories</h2>
+            </div>
+        </div>
+
+
+        <div class="admin-category-grid">
+
+            <button
+                class="admin-category-card"
+                data-category="Programming">
+
+                <div class="category-icon">💻</div>
+
+                <div>
+                    <h3>Programming</h3>
+                    <p>Technology discussions</p>
+                </div>
+
+            </button>
+
+
+            <button
+                class="admin-category-card"
+                data-category="Academics">
+
+                <div class="category-icon">📚</div>
+
+                <div>
+                    <h3>Academics</h3>
+                    <p>College and study topics</p>
+                </div>
+
+            </button>
+
+
+            <button
+                class="admin-category-card"
+                data-category="Projects">
+
+                <div class="category-icon">🎯</div>
+
+                <div>
+                    <h3>Projects</h3>
+                    <p>Project related discussions</p>
+                </div>
+
+            </button>
+
+
+            <button
+                class="admin-category-card"
+                data-category="General">
+
+                <div class="category-icon">💬</div>
+
+                <div>
+                    <h3>General</h3>
+                    <p>General conversations</p>
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORY RESULTS -->
+        <div id="categoryResults" class="admin-category-results">
+
+            <div class="category-results-header">
+                <div>
+                    <p class="eyebrow">SELECTED CATEGORY</p>
+                    <h2 id="selectedCategory">
+                        Select a category
+                    </h2>
+                </div>
+
+                <button
+                    id="showAllBtn"
+                    class="secondary-btn">
+                    Show All
+                </button>
+            </div>
+
+            <div id="categoryDiscussionList">
+                <div class="empty-box">
+                    Select a category to view its discussions.
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

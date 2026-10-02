@@ -1,4 +1,61 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Notifications | ForumHub</title><link rel="stylesheet" href="css/style.css"></head>
-<body><header class="navbar"><a class="brand" href="index.html"><span class="logo">F</span> ForumHub</a><nav><a href="index.html">Discussions</a><a href="create-thread.html">Create Thread</a></nav></header>
-<main class="content"><p class="eyebrow">Activity</p><h1>Notifications</h1><div id="notifications" class="notification-list"></div></main>
-<script src="js/forum.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | ForumHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <a href="index.html" class="brand">Forum<span>Hub</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">Discussions</a>
+            <a href="create-thread.html">Create Thread</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- NOTIFICATIONS PAGE -->
+    <main class="page-container">
+
+        <div class="form-section">
+
+            <div class="hero-badge">
+                Activity
+            </div>
+
+            <h1>Notifications</h1>
+
+            <p>
+                Stay updated with replies, votes and activity
+                on discussions you follow.
+            </p>
+
+
+            <!-- Notification list -->
+            <div id="notificationList" class="notification-list">
+
+                <!-- JavaScript will display notifications here -->
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/notifications.js"></script>
+
+</body>
+</html>
