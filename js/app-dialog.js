@@ -10,7 +10,11 @@
       primary.textContent = confirmLabel;
       const finish = result => { overlay.remove(); document.body.classList.remove('app-dialog-open'); resolve(result); };
       primary.addEventListener('click', () => finish(true));
-      if (confirm) overlay.querySelector('.app-dialog-cancel').addEventListener('click', () => finish(false));
+      if (confirm) {
+        const cancel = overlay.querySelector('.app-dialog-cancel');
+        cancel.textContent = cancelLabel;
+        cancel.addEventListener('click', () => finish(false));
+      }
       overlay.addEventListener('click', event => { if (event.target === overlay) finish(false); });
       document.addEventListener('keydown', function onKey(event) {
         if (event.key === 'Escape') { document.removeEventListener('keydown', onKey); finish(false); }
