@@ -8,8 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!currentUser || currentUser.role !== "user") {
-        alert("Please sign in with a user account before starting a discussion.");
-        window.location.replace("login.html");
+        const gate = document.createElement("div");
+        gate.className = "signin-gate";
+        gate.setAttribute("role", "dialog");
+        gate.setAttribute("aria-modal", "true");
+        gate.setAttribute("aria-labelledby", "signinGateTitle");
+        gate.innerHTML = `
+            <section class="signin-gate-card">
+                <div class="signin-gate-icon" aria-hidden="true">✦</div>
+                <p class="eyebrow">JOIN THE CONVERSATION</p>
+                <h2 id="signinGateTitle">Sign in to start a discussion</h2>
+                <p class="signin-gate-copy">Create an account or sign in to share your question with the ForumHub community.</p>
+                <div class="signin-gate-actions">
+                    <a class="btn" href="login.html">Sign in</a>
+                    <a class="btn btn-secondary" href="signup.html">Create account</a>
+                </div>
+                <a class="signin-gate-back" href="index.html#discussions">Back to discussions</a>
+            </section>`;
+        document.body.append(gate);
+        document.body.classList.add("signin-gate-open");
         return;
     }
 

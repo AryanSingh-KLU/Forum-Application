@@ -1288,6 +1288,47 @@ button {
 }
 .thread-back-link:hover { color: #ffffff; text-decoration: underline; }
 
+body.signin-gate-open { overflow: hidden; }
+.signin-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(3, 10, 22, .78);
+    backdrop-filter: blur(7px);
+}
+.signin-gate-card {
+    width: min(100%, 480px);
+    padding: 38px;
+    border: 1px solid #304766;
+    border-radius: 24px;
+    background: #101f35;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, .45);
+    text-align: center;
+    animation: gate-in .2s ease-out;
+}
+.signin-gate-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    color: #fff;
+    background: linear-gradient(135deg, #9a65f5, #7042d3);
+    font-size: 25px;
+}
+.signin-gate-card .eyebrow { margin-bottom: 10px; }
+.signin-gate-card h2 { margin: 0 0 12px; color: #fff; font-size: clamp(24px, 5vw, 30px); }
+.signin-gate-copy { margin: 0 auto 25px; max-width: 360px; color: #aebbd0; line-height: 1.65; }
+.signin-gate-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.signin-gate-back { display: inline-block; margin-top: 22px; color: #b9a2ff; font-weight: 600; text-decoration: none; }
+.signin-gate-back:hover { color: #fff; text-decoration: underline; }
+@keyframes gate-in { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 480px) { .signin-gate-card { padding: 28px 22px; } .signin-gate-actions { flex-direction: column; } }
+
 .thread-box {
     padding: 35px;
 
