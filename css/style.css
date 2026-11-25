@@ -93,6 +93,16 @@ button {
     color: #9b7cff;
 }
 
+.profile-menu { position: relative; color: inherit; }
+.profile-trigger { cursor: pointer; list-style: none; font-weight: 700; }
+.profile-trigger::-webkit-details-marker { display: none; }
+.profile-trigger::after { content: '⌄'; margin-left: 7px; color: #aebbd0; }
+.profile-panel { position: absolute; z-index: 20; right: 0; top: calc(100% + 14px); width: 240px; padding: 18px; display: grid; gap: 9px; border: 1px solid #304766; border-radius: 14px; background: #112139; box-shadow: 0 14px 35px #0005; }
+.profile-panel strong { color: #fff; }
+.profile-panel span { color: #aebbd0; font-size: .9rem; overflow-wrap: anywhere; }
+.profile-logout { margin-top: 5px; padding: 10px 14px; border: 0; border-radius: 8px; color: white; background: #8050e8; cursor: pointer; font: inherit; font-weight: 700; }
+.profile-logout:hover { background: #7042d3; }
+
 /* =========================================
    BUTTONS
    ========================================= */
