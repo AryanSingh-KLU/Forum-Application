@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
             likes: 0,
             dislikes: 0,
             replies: [],
-            followers: []
+            followers: [],
+            status: "pending"
         };
 
         threads.unshift(newThread);
@@ -83,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
         success.innerHTML = `
             <section class="signin-gate-card">
                 <div class="signin-gate-icon publish-success-icon" aria-hidden="true">✓</div>
-                <p class="eyebrow">POSTED TO THE COMMUNITY</p>
-                <h2 id="publishSuccessTitle">Discussion published!</h2>
-                <p class="signin-gate-copy">Your discussion is now available for the community to read and reply to.</p>
+                <p class="eyebrow">SUBMITTED FOR REVIEW</p>
+                <h2 id="publishSuccessTitle">Discussion submitted</h2>
+                <p class="signin-gate-copy">An admin will review your discussion. It will appear publicly after approval.</p>
                 <div class="signin-gate-actions">
                     <a class="btn" href="index.html#discussions">View discussions</a>
                 </div>

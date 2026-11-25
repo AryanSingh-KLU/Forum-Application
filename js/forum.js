@@ -283,6 +283,8 @@ function displayDiscussions(
     const filteredThreads =
         threads.filter(function (thread) {
 
+            if (thread.status === "pending" || thread.status === "rejected") return false;
+
             const title =
                 String(
                     thread.title || ""

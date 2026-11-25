@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
         replyForm.hidden = true;
         return;
     }
+    const visitor = read("currentUser", null);
+    if ((thread.status === "pending" || thread.status === "rejected") && visitor?.role !== "admin") {
+        detail.innerHTML = '<div class="thread-box"><h1>This discussion is not available yet</h1><p>It may still be under review or may not have been approved.</p><a href="index.html#discussions">Back to discussions</a></div>';
+        replyForm.hidden = true;
+        document.querySelector(".replies-section")?.setAttribute("hidden", "");
+        return;
+    }
     if (!Array.isArray(thread.replies)) thread.replies = [];
     if (!Array.isArray(thread.followers)) thread.followers = [];
     const persist = () => { localStorage.setItem("threads", JSON.stringify(threads)); };

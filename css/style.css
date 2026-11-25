@@ -114,6 +114,11 @@ button {
 .follower-count { color: #c4aaff !important; font-weight: 700; }
 .follower-names { overflow-wrap: anywhere; }
 .followed-empty { color: #aebbd0; line-height: 1.6; }
+.admin-status { display: inline-block; margin: 5px 0; padding: 4px 9px; border-radius: 999px; background: #253954; color: #d3def1; font-size: 12px; font-weight: 700; text-transform: capitalize; }
+.admin-status.status-pending { color: #ffe0a1; background: #55421f; }
+.admin-status.status-published { color: #a8f0cf; background: #174332; }
+.admin-status.status-rejected { color: #ffc0c0; background: #512e37; }
+.admin-item-actions { flex-wrap: wrap; }
 
 /* =========================================
    BUTTONS

@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderThreads(category) {
         const shown = category ? threads.filter(thread => (thread.category || "General") === category) : threads;
         document.getElementById("discussionCountLabel").textContent = `${threads.length} ${threads.length === 1 ? "discussion" : "discussions"}`;
-        list.innerHTML = shown.length ? shown.map(thread => `<article class="admin-item"><div class="admin-item-content"><span class="category-badge admin-item-category">${esc(thread.category || "General")}</span><h3>${esc(thread.title || "Untitled Discussion")}</h3><p>${esc(thread.description || thread.content || "No description available.")}</p><p class="admin-item-meta">Posted by <strong>${esc(thread.author || "Anonymous")}</strong> <span>•</span> ${repliesCount(thread)} ${repliesCount(thread) === 1 ? "reply" : "replies"}</p></div><div class="admin-item-actions"><button type="button" class="btn btn-danger btn-small" data-delete="${esc(thread.id)}">Delete</button></div></article>`).join("") : '<div class="admin-empty">No discussions to show yet.</div>';
+        list.innerHTML = shown.length ? shown.map(thread => {
+            const status = thread.status || "published";
+            const reviewActions = status === "pending" ? `<button type="button" class="btn btn-small" data-approve="${esc(thread.id)}">Approve &amp; publish</button><button type="button" class="btn btn-danger btn-small" data-reject="${esc(thread.id)}">Reject</button>` : "";
+            return `<article class="admin-item"><div class="admin-item-content"><span class="category-badge admin-item-category">${esc(thread.category || "General")}</span> <span class="admin-status status-${esc(status)}">${esc(status)}</span><h3>${esc(thread.title || "Untitled Discussion")}</h3><p>${esc(thread.description || thread.content || "No description available.")}</p><p class="admin-item-meta">Posted by <strong>${esc(thread.author || "Anonymous")}</strong> <span>•</span> ${repliesCount(thread)} ${repliesCount(thread) === 1 ? "reply" : "replies"}</p></div><div class="admin-item-actions">${reviewActions}<button type="button" class="btn btn-danger btn-small" data-delete="${esc(thread.id)}">Delete</button></div></article>`;
+        }).join("") : '<div class="admin-empty">No discussions to show yet.</div>';
     }
     function renderUsers() {
         document.getElementById("userCountLabel").textContent = `${users.length} ${users.length === 1 ? "user" : "users"}`;
@@ -32,9 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("categoryDiscussionList").innerHTML = threads.length ? threads.map(thread => `<div class="category-result-item"><strong>${esc(thread.title || "Untitled Discussion")}</strong><span>${esc(thread.category || "General")}</span></div>`).join("") : '<div class="admin-empty">No discussions yet.</div>';
     });
     list.addEventListener("click", async event => {
-        const button = event.target.closest("[data-delete]");
-        if (!button || !await window.showAppConfirm("Delete this discussion?", "Delete discussion")) return;
-        threads = threads.filter(thread => String(thread.id) !== button.dataset.delete);
+        const approve = event.target.closest("[data-approve]");
+        const reject = event.target.closest("[data-reject]");
+        const remove = event.target.closest("[data-delete]");
+        if (approve || reject) {
+            const id = (approve || reject).dataset[approve ? "approve" : "reject"];
+            const thread = threads.find(item => String(item.id) === id);
+            if (!thread) return;
+            if (reject && !await window.showAppConfirm("Reject this submission? It will stay hidden from the public discussion list.", "Reject discussion")) return;
+            thread.status = approve ? "published" : "rejected";
+            persist();
+            renderThreads();
+            return;
+        }
+        if (!remove || !await window.showAppConfirm("Delete this discussion?", "Delete discussion")) return;
+        threads = threads.filter(thread => String(thread.id) !== remove.dataset.delete);
         persist();
         document.getElementById("threadsCount").textContent = threads.length;
         document.getElementById("repliesCount").textContent = threads.reduce((sum, thread) => sum + repliesCount(thread), 0);
