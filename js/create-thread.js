@@ -74,9 +74,23 @@ document.addEventListener("DOMContentLoaded", function () {
             JSON.stringify(threads)
         );
 
-        alert("Discussion published successfully!");
-
-        window.location.href = "index.html";
+        const success = document.createElement("div");
+        success.className = "signin-gate publish-success-gate";
+        success.setAttribute("role", "dialog");
+        success.setAttribute("aria-modal", "true");
+        success.setAttribute("aria-labelledby", "publishSuccessTitle");
+        success.innerHTML = `
+            <section class="signin-gate-card">
+                <div class="signin-gate-icon publish-success-icon" aria-hidden="true">✓</div>
+                <p class="eyebrow">POSTED TO THE COMMUNITY</p>
+                <h2 id="publishSuccessTitle">Discussion published!</h2>
+                <p class="signin-gate-copy">Your discussion is now available for the community to read and reply to.</p>
+                <div class="signin-gate-actions">
+                    <a class="btn" href="index.html#discussions">View discussions</a>
+                </div>
+            </section>`;
+        document.body.append(success);
+        document.body.classList.add("signin-gate-open");
 
     });
 

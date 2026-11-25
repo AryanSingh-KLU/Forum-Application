@@ -1320,6 +1320,7 @@ body.signin-gate-open { overflow: hidden; }
     background: linear-gradient(135deg, #9a65f5, #7042d3);
     font-size: 25px;
 }
+.publish-success-icon { background: linear-gradient(135deg, #24a879, #17835f); }
 .signin-gate-card .eyebrow { margin-bottom: 10px; }
 .signin-gate-card h2 { margin: 0 0 12px; color: #fff; font-size: clamp(24px, 5vw, 30px); }
 .signin-gate-copy { margin: 0 auto 25px; max-width: 360px; color: #aebbd0; line-height: 1.65; }
