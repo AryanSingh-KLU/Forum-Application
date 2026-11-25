@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: category,
             description: description,
             author: currentUser.name,
+            authorEmail: currentUser.email,
             date: new Date().toLocaleDateString(),
             likes: 0,
             dislikes: 0,

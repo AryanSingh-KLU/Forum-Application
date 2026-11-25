@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!Array.isArray(thread.followers)) thread.followers = [];
     const persist = () => { localStorage.setItem("threads", JSON.stringify(threads)); };
     const currentUser = read("currentUser", null);
+    const canDeleteThread = Boolean(currentUser && (
+        currentUser.role === "admin" ||
+        (thread.authorEmail && currentUser.email && thread.authorEmail.toLowerCase() === currentUser.email.toLowerCase()) ||
+        (!thread.authorEmail && thread.author && currentUser.name && thread.author.toLowerCase() === currentUser.name.toLowerCase())
+    ));
     let guestId = localStorage.getItem("forumGuestId");
     if (!guestId) {
         guestId = `guest-${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const count = () => Array.isArray(thread.replies) ? thread.replies.length : Number(thread.replies || 0);
     function render() {
         const myVote = thread.votes[userKey];
-        detail.innerHTML = `<article class="thread-box"><span class="category-badge">${esc(thread.category || "General")}</span><h1>${esc(thread.title || "Untitled Discussion")}</h1><p class="thread-author">Posted by <strong>${esc(thread.author || "Anonymous")}</strong> • ${esc(thread.date || "Recently")}</p><p class="thread-description">${esc(thread.description || thread.content || "No description provided.")}</p><div class="thread-actions"><button class="btn btn-small ${myVote === "like" ? "" : "btn-secondary"}" type="button" id="upvote" aria-pressed="${myVote === "like"}">👍 ${Number(thread.likes) || 0}</button><button class="btn btn-small ${myVote === "dislike" ? "btn-danger" : "btn-secondary"}" type="button" id="downvote" aria-pressed="${myVote === "dislike"}">👎 ${Number(thread.dislikes) || 0}</button><button class="btn btn-small btn-secondary" type="button" id="follow">${thread.followers.includes(userKey) ? "Following" : "Follow discussion"}</button></div></article>`;
+        detail.innerHTML = `<article class="thread-box"><span class="category-badge">${esc(thread.category || "General")}</span><h1>${esc(thread.title || "Untitled Discussion")}</h1><p class="thread-author">Posted by <strong>${esc(thread.author || "Anonymous")}</strong> • ${esc(thread.date || "Recently")}</p><p class="thread-description">${esc(thread.description || thread.content || "No description provided.")}</p><div class="thread-actions"><button class="btn btn-small ${myVote === "like" ? "" : "btn-secondary"}" type="button" id="upvote" aria-pressed="${myVote === "like"}">👍 ${Number(thread.likes) || 0}</button><button class="btn btn-small ${myVote === "dislike" ? "btn-danger" : "btn-secondary"}" type="button" id="downvote" aria-pressed="${myVote === "dislike"}">👎 ${Number(thread.dislikes) || 0}</button><button class="btn btn-small btn-secondary" type="button" id="follow">${thread.followers.includes(userKey) ? "Following" : "Follow discussion"}</button>${canDeleteThread ? '<button class="btn btn-small btn-danger" type="button" id="deleteThread">Delete discussion</button>' : ""}</div></article>`;
         document.querySelector(".reply-count").textContent = `${count()} ${count() === 1 ? "reply" : "replies"}`;
         repliesEl.innerHTML = count() ? thread.replies.map(reply => typeof reply === "string" ? `<article class="reply-card"><p>${esc(reply)}</p></article>` : `<article class="reply-card"><p>${esc(reply.text || "")}</p><small>${esc(reply.author || "Community member")} • ${esc(reply.date || "Recently")}</small></article>`).join("") : '<p class="empty-box">No replies yet. Be the first to respond.</p>';
         const castVote = type => {
@@ -60,6 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (thread.followers.includes(userKey)) thread.followers = thread.followers.filter(user => user !== userKey);
             else thread.followers.push(userKey);
             persist(); render();
+        };
+        const deleteButton = document.getElementById("deleteThread");
+        if (deleteButton) deleteButton.onclick = () => {
+            if (!window.confirm("Delete this discussion? This will also remove its replies.")) return;
+            threads = threads.filter(item => String(item.id) !== String(thread.id));
+            persist();
+            window.location.href = "index.html#discussions";
         };
     }
     replyForm.addEventListener("submit", event => {
