@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
             persist(); render();
         };
         const deleteButton = document.getElementById("deleteThread");
-        if (deleteButton) deleteButton.onclick = () => {
-            if (!window.confirm("Delete this discussion? This will also remove its replies.")) return;
+        if (deleteButton) deleteButton.onclick = async () => {
+            if (!await window.showAppConfirm("Delete this discussion? This will also remove its replies.", "Delete discussion")) return;
             threads = threads.filter(item => String(item.id) !== String(thread.id));
             persist();
             window.location.href = "index.html#discussions";

@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("selectedCategory").textContent = "All discussions";
         document.getElementById("categoryDiscussionList").innerHTML = threads.length ? threads.map(thread => `<div class="category-result-item"><strong>${esc(thread.title || "Untitled Discussion")}</strong><span>${esc(thread.category || "General")}</span></div>`).join("") : '<div class="admin-empty">No discussions yet.</div>';
     });
-    list.addEventListener("click", event => {
+    list.addEventListener("click", async event => {
         const button = event.target.closest("[data-delete]");
-        if (!button || !confirm("Delete this discussion?")) return;
+        if (!button || !await window.showAppConfirm("Delete this discussion?", "Delete discussion")) return;
         threads = threads.filter(thread => String(thread.id) !== button.dataset.delete);
         persist();
         document.getElementById("threadsCount").textContent = threads.length;

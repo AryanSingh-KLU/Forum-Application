@@ -1321,6 +1321,17 @@ body.signin-gate-open { overflow: hidden; }
     font-size: 25px;
 }
 .publish-success-icon { background: linear-gradient(135deg, #24a879, #17835f); }
+.app-dialog-open { overflow: hidden; }
+.app-dialog-overlay { position: fixed; inset: 0; z-index: 2100; display: grid; place-items: center; padding: 22px; background: rgba(3,10,22,.78); backdrop-filter: blur(7px); }
+.app-dialog { width: min(100%, 450px); padding: 32px; border: 1px solid #304766; border-radius: 22px; background: #101f35; box-shadow: 0 28px 90px rgba(0,0,0,.45); text-align: center; animation: gate-in .2s ease-out; }
+.app-dialog-mark { width: 48px; height: 48px; margin: 0 auto 16px; display: grid; place-items: center; border-radius: 15px; color: #fff; background: linear-gradient(135deg,#9a65f5,#7042d3); font-size: 24px; font-weight: 800; }
+.app-dialog h2 { margin: 0 0 10px; color: #fff; font-size: 25px; }
+.app-dialog-message { margin: 0 auto 24px; max-width: 360px; color: #aebbd0; line-height: 1.6; white-space: pre-line; }
+.app-dialog-actions { display: flex; justify-content: center; gap: 12px; }
+.app-dialog-actions button { min-width: 110px; padding: 11px 18px; border: 1px solid #405675; border-radius: 10px; color: #fff; background: #182b45; font: inherit; font-weight: 700; cursor: pointer; }
+.app-dialog-actions .app-dialog-primary { border-color: transparent; background: #8050e8; }
+.app-dialog-actions .app-dialog-cancel:hover { background: #233b59; }
+.app-dialog-actions .app-dialog-primary:hover { background: #7042d3; }
 .signin-gate-card .eyebrow { margin-bottom: 10px; }
 .signin-gate-card h2 { margin: 0 0 12px; color: #fff; font-size: clamp(24px, 5vw, 30px); }
 .signin-gate-copy { margin: 0 auto 25px; max-width: 360px; color: #aebbd0; line-height: 1.65; }

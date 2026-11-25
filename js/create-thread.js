@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const description = document.getElementById("description").value.trim();
 
         if (title === "" || category === "" || description === "") {
-            alert("Please fill all the fields.");
+            window.showAppAlert("Please fill in the title, category, and description.", "Complete all fields");
             return;
         }
 
