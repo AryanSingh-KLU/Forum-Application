@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return `<a class="followed-card" href="thread.html?id=${encodeURIComponent(thread.id)}"><span class="category-badge">${esc(thread.category || 'General')}</span><h3>${esc(thread.title || 'Untitled discussion')}</h3><p>By ${esc(thread.author || 'Community member')}</p><span class="follower-count">${followers.length} ${followers.length === 1 ? 'follower' : 'followers'}</span></a>`;
   }).join('') : '<div class="followed-empty">You are not following any discussions yet. Open a thread and choose “Follow discussion” to add one here.</div>';
 
-  const ownThreads = threads.filter(thread => thread.authorEmail && String(thread.authorEmail).toLowerCase() === key);
+  const ownThreads = threads.filter(thread => {
+    if (thread.authorEmail && key) return String(thread.authorEmail).toLowerCase() === key;
+    return Boolean(user.name && thread.author && String(thread.author).trim().toLowerCase() === String(user.name).trim().toLowerCase());
+  });
   followersRoot.innerHTML = ownThreads.length ? ownThreads.map(thread => {
     const followers = Array.isArray(thread.followers) ? thread.followers : [];
     const names = followers.map(id => users.find(item => String(item.email || '').toLowerCase() === String(id).toLowerCase())?.name).filter(Boolean);
