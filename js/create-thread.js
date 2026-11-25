@@ -1,5 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    let currentUser = null;
+    try {
+        currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+    } catch {
+        currentUser = null;
+    }
+
+    if (!currentUser || currentUser.role !== "user") {
+        alert("Please sign in with a user account before starting a discussion.");
+        window.location.replace("login.html");
+        return;
+    }
+
     const form = document.getElementById("threadForm");
 
     if (!form) {
@@ -24,16 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
         try { threads = JSON.parse(localStorage.getItem("threads") || "[]"); } catch { threads = []; }
         if (!Array.isArray(threads)) threads = [];
 
-        const currentUser = JSON.parse(
-            localStorage.getItem("currentUser")
-        );
-
         const newThread = {
             id: Date.now(),
             title: title,
             category: category,
             description: description,
-            author: currentUser ? currentUser.name : (document.getElementById("threadAuthor")?.value.trim() || "Anonymous"),
+            author: currentUser.name,
             date: new Date().toLocaleDateString(),
             likes: 0,
             dislikes: 0,

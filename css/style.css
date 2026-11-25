@@ -1279,6 +1279,15 @@ button {
     margin: 50px auto;
 }
 
+.thread-back-link {
+    display: inline-flex;
+    margin-bottom: 20px;
+    color: #b9a2ff;
+    font-weight: 700;
+    text-decoration: none;
+}
+.thread-back-link:hover { color: #ffffff; text-decoration: underline; }
+
 .thread-box {
     padding: 35px;
 
